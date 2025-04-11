@@ -1,0 +1,277 @@
+:root {
+    --primario: #000000; 
+    --secundario: #1e1e1e; 
+    --acento: #FFFFFF; 
+    --fondo2: #f4f4f4; 
+    --fondo: #FFFFFF; 
+    --texto: #333333; 
+    --oscuro: #1e1e1e;
+    --separador: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--fondo);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--secundario);
+}
+
+.logo img {
+    height: 60px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: var(--primario);
+}
+
+.logo p {
+    font-size: 0.9rem;
+    color: var(--secundario);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--secundario);
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+nav a:hover, nav a.selected {
+    color: var(--primario);
+    border-bottom: 2px solid var(--primario);
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    color: var(--secundario);
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.social a {
+    margin-left: 1rem;
+    color: var(--secundario);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social a:hover {
+    color: var(--primario);
+}
+
+.contact-info {
+    margin-top: 0.5rem;
+    color: var(--secundario);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Estilos para la sección "Acerca de" */
+.about {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primario);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.about h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--primario);
+}
+
+.intro {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: var(--fondo);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--primario);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    color: var(--primario);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.service-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primario);
+}
+
+.service-card h4 {
+    font-size: 1.2rem;
+    color: var(--primario);
+    margin: 1.5rem 0 1rem;
+}
+
+.service-card ul {
+    list-style-position: inside;
+    margin-bottom: 1rem;
+}
+
+.service-card ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.service-card ul li strong {
+    color: var(--primario);
+}
+
+.service-card p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--secundario);
+    color: white;
+    margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+    
+    .logo {
+        margin-bottom: 1rem;
+    }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--fondo);
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        padding: 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+    
+    nav ul.show {
+        right: 0;
+        display: flex;
+    }
+    
+    .hamburger {
+        display: block;
+        z-index: 1001;
+    }
+    
+    .social {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .contact-info {
+        display: none;
+    }
+    
+    .about {
+        padding: 2rem 1rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animación para las tarjetas */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.service-card {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }

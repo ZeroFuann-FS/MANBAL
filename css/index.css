@@ -1,0 +1,368 @@
+:root {
+    --primario: #000000; 
+    --secundario: #1e1e1e; 
+    --acento: #FFFFFF; 
+    --fondo2: #f4f4f4; 
+    --fondo: #FFFFFF; 
+    --texto: #333333; 
+    --oscuro: #1e1e1e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--fondo);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--secundario);
+}
+
+.logo img {
+    height: 60px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: var(--primario);
+}
+
+.logo p {
+    font-size: 0.9rem;
+    color: var(--secundario);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--secundario);
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+nav a:hover, nav a.selected {
+    color: var(--primario);
+    border-bottom: 2px solid var(--primario);
+}
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    color: var(--secundario);
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.social a {
+    margin-left: 1rem;
+    color: var(--secundario);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.social a:hover {
+    color: var(--primario);
+}
+
+.contact-info {
+    margin-top: 0.5rem;
+    color: var(--secundario);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Menú en versión responsiva */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--fondo);
+        position: fixed;
+        top: 0;
+        right: -250px;
+        height: 100%;
+        width: 250px;
+        padding: 2rem;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+
+    nav ul.show {
+        right: 0;
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 1001;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .social {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 1rem;
+        padding-right: 1rem;
+    }
+
+    .contact-info {
+        display: none;
+    }
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('../img/Hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--primario);
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background-color: var(--primario);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: var(--secundario);
+}
+
+/* Descripción Section */
+.descripcion {
+    background-color: var(--fondo2);
+    padding: 4rem 2rem;
+    color: var(--texto);
+}
+
+.descripcion .container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.descripcion h2 {
+    font-size: 2rem;
+    color: var(--primario);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.descripcion p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.descripcion ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.descripcion li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.descripcion li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--primario);
+}
+
+/* Carrusel de imágenes */
+.image-carousel {
+    margin: 3rem auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.slides {
+    padding-left: 0;
+    width: 400%;
+    display: flex;
+    list-style: none;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 25%;
+}
+
+.slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-container input {
+    display: none;
+}
+
+.slides-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.slides-nav label {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#slide-1:checked ~ .slides {
+    transform: translateX(0%);
+}
+
+#slide-2:checked ~ .slides {
+    transform: translateX(-25%);
+}
+
+#slide-3:checked ~ .slides {
+    transform: translateX(-50%);
+}
+
+#slide-4:checked ~ .slides {
+    transform: translateX(-75%);
+}
+
+#slide-1:checked ~ .slides-nav label[for="slide-1"],
+#slide-2:checked ~ .slides-nav label[for="slide-2"], 
+#slide-3:checked ~ .slides-nav label[for="slide-3"],
+#slide-4:checked ~ .slides-nav label[for="slide-4"] {
+    background-color: var(--acento);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--secundario);
+    color: white;
+    margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 1rem;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .descripcion {
+        padding: 2rem 1rem;
+    }
+    
+    .slide img {
+        height: 300px;
+    }
+    
+    .slides-nav label {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .slide img {
+        height: 200px;
+    }
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotización Topográfica | Grupo MANBAL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/contacto.css">
+  <link rel="stylesheet" href="css/calculadora-combinada.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+<!-- Al final del body -->
+<script src="js/calculadora-combinada.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="img/Logo.png" alt="Logo Grupo MANBAL">
+      <h1>Grupo MANBAL</h1>
+      <p>Ingeniería & Topografía</p>
+    </div>
+  
+    <nav>
+      <div class="hamburger" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="acerca.html">Acerca de Nosotros</a></li>
+        <li><a href="servicioYcostos.html">Servicios y costos</a></li>
+        <li><a href="contacto.html" class="selected">Contactos</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  
+    <div class="social">
+      <a href="https://www.facebook.com/share/15qXMsMAd7/"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.link/bbiirv"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.tiktok.com/@inges_manbal6?_t=ZM-8vM4r7keHqf&_r=1"><i class="fab fa-tiktok"></i></a>
+      <p class="contact-info">grupomandal@gmail.com | (+52)2321 091 909</p>
+    </div>
+  </header>
+
+  <main class="contact-hero">
+    <div class="hero-overlay"></div>
+    <div class="contact-container">
+      <section class="contact-intro">
+        <h1>Solicitud de Cotización Topográfica</h1>
+        <p>Calcula el costo aproximado y envíanos los detalles de tu proyecto</p>
+      </section>
+
+      <div class="calculator-container">
+        <!-- Sección de la calculadora -->
+        <div class="calculator-section">
+          <h2><i class="fas fa-calculator"></i> Calculadora de Cotización</h2>
+          
+          <div class="form-group">
+            <label for="area">1. Área del terreno</label>
+            <select id="area" required>
+              <option value="" disabled selected>Seleccione el rango</option>
+              <option value="5000">1 hectárea ($5,000 MXN)</option>
+              <option value="15000">1-5 hectáreas ($15,000-$30,000 MXN)</option>
+              <option value="2500">5-20 hectáreas ($2,500-$4,000 por ha)</option>
+              <option value="2000">20-50 hectáreas ($2,000-$3,500 por ha)</option>
+              <option value="1500">Más de 50 hectáreas ($1,500-$3,000 por ha)</option>
+            </select>
+          </div>
+          
+          <div class="form-group" id="customAreaGroup" style="display: none;">
+            <label for="customArea">Hectáreas exactas</label>
+            <input type="number" id="customArea" min="1" step="0.1" placeholder="Ingrese el número de hectáreas">
+          </div>
+          
+          <div class="form-group">
+            <label for="location">2. Ubicación del terreno</label>
+            <select id="location" required>
+              <option value="" disabled selected>Seleccione la ubicación</option>
+              <option value="0.02">Dentro de Misantla (hasta 20 km) +2%</option>
+              <option value="0.06">Municipios vecinos +6%</option>
+              <option value="0.10">Otro estado +10%</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>3. Productos requeridos (Puede seleccionar varios)</label>
+            <div class="checkbox-group">
+              <div>
+                <input type="checkbox" id="planta" value="0.05">
+                <label for="planta">Planta topográfica +5%</label>
+              </div>
+              <div>
+                <input type="checkbox" id="curvas" value="0.07">
+                <label for="curvas">Curvas de nivel +7%</label>
+              </div>
+              <div>
+                <input type="checkbox" id="detalle" value="0.06">
+                <label for="detalle">Detalle +6%</label>
+              </div>
+              <div>
+                <input type="checkbox" id="perfil" value="0.06">
+                <label for="perfil">Perfil +6%</label>
+              </div>
+              <div>
+                <input type="checkbox" id="plataformas" value="0.08">
+                <label for="plataformas">Plataformas +8%</label>
+              </div>
+              <div>
+                <input type="checkbox" id="deslinde" value="0.05">
+                <label for="deslinde">Deslinde +5%</label>
+              </div>
+              <div>
+                <input type="checkbox" id="replanteo" value="0.04">
+                <label for="replanteo">Replanteo +4%</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="equipment">4. Equipo a utilizar</label>
+            <select id="equipment" required>
+              <option value="0" selected>Plomada y cinta 0%</option>
+              <option value="0.05">Estación total +5%</option>
+              <option value="0.07">GPS RTK +7%</option>
+              <option value="0.10">Dron RTK +10%</option>
+              <option value="0.04">Nivel fijo +4%</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="terrain">5. Tipo de terreno</label>
+            <select id="terrain" required>
+              <option value="0" selected>Plano 0%</option>
+              <option value="0.06">Lomerío +6%</option>
+              <option value="0.12">Montañoso +12%</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="vegetation">6. Vegetación</label>
+            <select id="vegetation" required>
+              <option value="0" selected>Poca 0%</option>
+              <option value="0.05">Media +5%</option>
+              <option value="0.10">Mucha +10%</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="surface">7. Superficie del suelo</label>
+            <select id="surface" required>
+              <option value="0" selected>Seco 0%</option>
+              <option value="0.03">Húmedo +3%</option>
+              <option value="0.10">Acuoso +10%</option>
+              <option value="0.06">Rocoso +6%</option>
+              <option value="0.08">Fangoso +8%</option>
+            </select>
+          </div>
+          
+          <button type="button" id="calculateBtn" class="btn-calculate">
+            <i class="fas fa-calculator"></i> Calcular Cotización
+          </button>
+        </div>
+        
+        <!-- Resultados de la calculadora -->
+        <div class="result" id="result">
+          <h2><i class="fas fa-file-invoice-dollar"></i> Estimado de cotización</h2>
+          <div class="price" id="finalPrice">$0.00 MXN</div>
+          
+          <div class="breakdown">
+            <h3>Desglose:</h3>
+            <div class="breakdown-item">
+              <span>Precio base:</span>
+              <span id="basePrice">$0.00</span>
+            </div>
+            <div class="breakdown-item">
+              <span>Ajuste por ubicación:</span>
+              <span id="locationAdjustment">$0.00</span>
+            </div>
+            <div class="breakdown-item">
+              <span>Productos adicionales:</span>
+              <span id="productsAdjustment">$0.00</span>
+            </div>
+            <div class="breakdown-item">
+              <span>Equipo especial:</span>
+              <span id="equipmentAdjustment">$0.00</span>
+            </div>
+            <div class="breakdown-item">
+              <span>Condiciones del terreno:</span>
+              <span id="terrainAdjustment">$0.00</span>
+            </div>
+            <div class="breakdown-item total">
+              <span>Total estimado:</span>
+              <span id="totalPrice">$0.00 MXN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario de contacto y detalles del proyecto -->
+      <form id="presupuesto-form" class="minimal-form">
+        <h2><i class="fas fa-user-tie"></i> Información del Cliente</h2>
+        
+        <div class="form-group">
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre completo*" required>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Email*" required>
+          </div>
+          
+          <div class="form-group">
+            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono*" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" id="ubicacion" name="ubicacion" placeholder="Ubicación exacta del proyecto*" required>
+        </div>
+        
+        <h2><i class="fas fa-calendar-alt"></i> Fechas del Proyecto</h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fecha-inicio">Fecha de inicio preferida</label>
+            <input type="date" id="fecha-inicio" name="fecha-inicio" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="fecha-entrega">Fecha estimada de entrega</label>
+            <select id="fecha-entrega" name="fecha-entrega" required>
+              <option value="" disabled selected>Seleccione plazo</option>
+              <option value="3">3 días (Urgente +15%)</option>
+              <option value="5">5 días (Estándar)</option>
+              <option value="7">7 días (Normal)</option>
+              <option value="10">10 días (Sin prisa)</option>
+            </select>
+          </div>
+        </div>
+        
+        <h2><i class="fas fa-file-export"></i> Formato de Entrega</h2>
+        
+        <div class="form-group">
+          <label>Formatos requeridos:</label>
+          <div class="checkbox-group">
+            <div>
+              <input type="checkbox" id="formato-pdf" name="formato[]" value="PDF" checked>
+              <label for="formato-pdf">PDF Digital</label>
+            </div>
+            <div>
+              <input type="checkbox" id="formato-impreso" name="formato[]" value="Impreso">
+              <label for="formato-impreso">Documento Impreso</label>
+            </div>
+            <div>
+              <input type="checkbox" id="formato-dwg" name="formato[]" value="DWG">
+              <label for="formato-dwg">Archivo DWG (AutoCAD)</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group" id="tamano-papel-group" style="display: none;">
+          <label for="tamano-papel">Tamaño de papel para impresión</label>
+          <select id="tamano-papel" name="tamano-papel">
+            <option value="Oficio">Oficio (+$100 MXN)</option>
+            <option value="Carta">Carta (Estándar)</option>
+            <option value="A1">Tamaño A1 (+$300 MXN)</option>
+            <option value="A2">Tamaño A2 (+$200 MXN)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <textarea id="proyecto" name="proyecto" placeholder="Descripción detallada del proyecto*" required></textarea>
+        </div>
+        
+        <div class="form-submit">
+          <button type="submit" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Enviar Solicitud Completa
+          </button>
+        </div>
+        
+        <div id="form-message" class="form-message"></div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/15qXMsMAd7/"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.link/bbiirv"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.tiktok.com/@inges_manbal6?_t=ZM-8vM4r7keHqf&_r=1"><i class="fab fa-tiktok"></i></a>
+      </div>
+      
+      <div class="footer-info">
+        <p>grupomanbal@gmail.com | (+52) 2321 091 909</p>
+      </div>
+      
+      <div class="copyright">
+        <p>© 2025 Grupo MANBAL. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/calculadora-combinada.js"></script>
+</body>
+</html>
