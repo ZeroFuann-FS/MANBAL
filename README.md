@@ -36,6 +36,6 @@ Proyecto web estático de MANBAL, una landing page informativa y atractiva para 
 
 > Nota: Este es un proyecto estático, por lo que no requiere servidor ni instalación adicional.
 
-##Visualización
+## Visualización
 
 https://zerofuann-fs.github.io/MANBAL/
